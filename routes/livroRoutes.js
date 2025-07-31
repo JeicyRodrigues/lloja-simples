@@ -1,12 +1,14 @@
 import express from 'express';
-import { getLivros } from '../controllers/livroController.js';
+import { getLivros, getLivro, postLivro, patchLivro, deletaLivro } from '../controllers/livroController.js';
 
 
 
-const routes = express.Router();
+const router = express.Router();
 
-routes.get('/', getLivros);
+router.delete("/:id", deletaLivro)
+router.patch("/:id", patchLivro);
+router.post('/', postLivro);
+router.get('/', getLivros);
+router.get('/:id', getLivro);
 
-
-
-export default routes;
+export default router;
